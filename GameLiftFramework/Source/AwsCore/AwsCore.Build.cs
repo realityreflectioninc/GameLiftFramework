@@ -3,12 +3,12 @@ using System.IO;
 
 public class AwsCore : ModuleRules
 {
-	public AwsCore(TargetInfo Target)
-	{
+	public AwsCore(ReadOnlyTargetRules Target) : base(Target)
+    {
 		PrivateIncludePaths.AddRange(new string[] { "AwsCore/Private" });
 		PublicIncludePaths.AddRange(new string[] { "AwsCore/Public" });
 
-		PublicDependencyModuleNames.AddRange(new string[] { "Engine", "Core", "CoreUObject", "Engine", "InputCore" });
+		PublicDependencyModuleNames.AddRange(new string[] { "Engine", "Core", "CoreUObject", "Projects", "Engine", "InputCore" });
 		PrivateDependencyModuleNames.AddRange(new string[] { });
 
         string BaseDirectory = System.IO.Path.GetFullPath(System.IO.Path.Combine(ModuleDirectory, "..", ".."));

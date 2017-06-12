@@ -3,12 +3,12 @@ using System.IO;
 
 public class GameLiftClient : ModuleRules
 {
-	public GameLiftClient(TargetInfo Target)
-	{
+	public GameLiftClient(ReadOnlyTargetRules Target) : base(Target)
+    {
 		PrivateIncludePaths.AddRange(new string[] { "GameLiftClient/Private" });
 		PublicIncludePaths.AddRange(new string[] { "GameLiftClient/Public" });
 
-		PublicDependencyModuleNames.AddRange(new string[] { "Engine", "Core", "CoreUObject", "Engine", "InputCore" });
+		PublicDependencyModuleNames.AddRange(new string[] { "Engine", "Core", "CoreUObject", "Projects", "Engine", "InputCore" });
 		PrivateDependencyModuleNames.AddRange(new string[] { "AwsCore" });
 
         string BaseDirectory = System.IO.Path.GetFullPath(System.IO.Path.Combine(ModuleDirectory, "..", ".."));

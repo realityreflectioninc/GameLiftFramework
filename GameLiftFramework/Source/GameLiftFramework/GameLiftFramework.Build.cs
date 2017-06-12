@@ -4,8 +4,8 @@ using UnrealBuildTool;
 
 public class GameLiftFramework : ModuleRules
 {
-	public GameLiftFramework(TargetInfo Target)
-	{
+	public GameLiftFramework(ReadOnlyTargetRules Target) : base(Target)
+    {
         PrivateIncludePaths.AddRange(new string[] { "GameLiftFramework/Private" });
         PublicIncludePaths.AddRange(new string[] { "GameLiftFramework/Public" });
 

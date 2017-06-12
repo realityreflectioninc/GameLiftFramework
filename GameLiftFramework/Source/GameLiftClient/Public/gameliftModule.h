@@ -15,4 +15,7 @@ public:
 	void ShutdownModule();
 
 private:
+	static void* GameLiftClientLibraryHandle;
+	static bool LoadDependency(const FString& Dir, const FString& Name, void*& Handle);
+	static void FreeDependency(void*& Handle);
 };

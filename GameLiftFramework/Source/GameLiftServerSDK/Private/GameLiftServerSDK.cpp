@@ -25,7 +25,7 @@ void FGameLiftServerSDKModule::StartupModule()
 #if PLATFORM_WINDOWS
     #if PLATFORM_64BITS
         #if WITH_GAMELIFT
-            FString BaseDir = IPluginManager::Get().FindPlugin("GameLiftServerSDK")->GetBaseDir();
+            FString BaseDir = IPluginManager::Get().FindPlugin("GameLiftFramework")->GetBaseDir();
             const FString SDKDir = FPaths::Combine(*BaseDir, TEXT("ThirdParty"), TEXT("GameLiftServerSDK"));
             const FString LibName = TEXT("aws-cpp-sdk-gamelift-server");
             const FString LibDir = FPaths::Combine(*SDKDir, TEXT("Win64"));

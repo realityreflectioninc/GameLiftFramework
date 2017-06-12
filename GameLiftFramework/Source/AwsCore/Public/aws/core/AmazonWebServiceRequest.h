@@ -1,5 +1,5 @@
 /*
-  * Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+  * Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
   *
   * Licensed under the Apache License, Version 2.0 (the "License").
   * You may not use this file except in compliance with the License.
@@ -69,6 +69,11 @@ namespace Aws
          * then adds the existing query string parameters as normal.
          */
         virtual void PutToPresignedUrl(Aws::Http::URI& uri) const { DumpBodyToUrl(uri); AddQueryStringParameters(uri); }
+
+        /**
+         * Defaults to true, if this is set to false, then signers, if they support body signing, will not do so
+         */
+        virtual bool SignBody() const { return true; }
 
         /**
          * Retrieves the factory for creating response streams.

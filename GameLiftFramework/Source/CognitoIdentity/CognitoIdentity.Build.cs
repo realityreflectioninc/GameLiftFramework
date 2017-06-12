@@ -3,12 +3,12 @@ using System.IO;
 
 public class CognitoIdentity : ModuleRules
 {
-	public CognitoIdentity(TargetInfo Target)
-	{
+	public CognitoIdentity(ReadOnlyTargetRules Target) : base(Target)
+    {
 		PrivateIncludePaths.AddRange(new string[] { "CognitoIdentity/Private" });
 		PublicIncludePaths.AddRange(new string[] { "CognitoIdentity/Public" });
 
-		PublicDependencyModuleNames.AddRange(new string[] { "Engine", "Core", "CoreUObject", "Engine", "InputCore" });
+		PublicDependencyModuleNames.AddRange(new string[] { "Engine", "Core", "CoreUObject", "Projects", "Engine", "InputCore" });
 		PrivateDependencyModuleNames.AddRange(new string[] { "AwsCore" });
 
         string BaseDirectory = System.IO.Path.GetFullPath(System.IO.Path.Combine(ModuleDirectory, "..", ".."));

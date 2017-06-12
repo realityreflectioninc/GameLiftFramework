@@ -1,5 +1,5 @@
 /*
-  * Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+  * Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
   *
   * Licensed under the Apache License, Version 2.0 (the "License").
   * You may not use this file except in compliance with the License.
@@ -85,6 +85,10 @@ namespace Aws
              * override the http endpoint used to talk to a service. Use this in conjunction with authenticationRegion.
              */
             Aws::String endpointOverride;
+            /**
+             * If you have users going through a proxy, set the proxy scheme here. Default HTTP
+             */
+            Aws::Http::Scheme proxyScheme;
             /**
              * If you have users going through a proxy, set the host here.
              */
