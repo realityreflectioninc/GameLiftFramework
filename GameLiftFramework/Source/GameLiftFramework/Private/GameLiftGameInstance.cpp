@@ -13,5 +13,7 @@ UGameLiftGameInstance::UGameLiftGameInstance()
 
 void UGameLiftGameInstance::Init()
 {
+#if !WITH_GAMELIFT
 	GameLiftClient = NewObject<UGameLiftClient>(GameLiftClientClass);
+#endif
 }
