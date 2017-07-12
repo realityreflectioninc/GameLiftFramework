@@ -1,0 +1,44 @@
+{
+	"FileVersion": 3,
+	"Version": 3,
+	"VersionName": "1.0.0",
+	"FriendlyName": "GameLiftFramework",
+	"Description": "",
+	"Category": "Other",
+	"CreatedBy": "",
+	"CreatedByURL": "",
+	"DocsURL": "",
+	"MarketplaceURL": "",
+	"SupportURL": "",
+	"EnabledByDefault": true,
+	"CanContainContent": false,
+	"IsBetaVersion": false,
+	"Installed": false,
+	"Modules": [
+        {
+			"Name": "AwsCore",
+			"Type": "Runtime",
+			"LoadingPhase": "PreDefault"
+		},
+        {
+			"Name": "CognitoIdentity",
+			"Type": "Runtime",
+			"LoadingPhase": "PreDefault"
+		},
+        {
+			"Name": "GameLiftClient",
+			"Type": "Runtime",
+			"LoadingPhase": "PreDefault"
+		},
+		{
+			"Name": "GameLiftServerSDK",
+			"Type": "Runtime",
+			"LoadingPhase": "PreDefault"
+		},
+        {
+			"Name": "GameLiftFramework",
+			"Type": "Runtime",
+			"LoadingPhase": "PreDefault"
+		}
+	]
+}
