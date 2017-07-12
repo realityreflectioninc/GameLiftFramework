@@ -20,5 +20,7 @@ public:
 	UFUNCTION(Server, WithValidation, Reliable)
 	void ServerAcceptPlayer(const FString& PlayerSessionId);
 	
+	UFUNCTION(Client, Reliable)
+	void TryServerAccept();
 	
 };

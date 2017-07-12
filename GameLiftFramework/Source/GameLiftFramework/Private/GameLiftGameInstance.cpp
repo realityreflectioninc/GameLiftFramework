@@ -9,6 +9,7 @@
 UGameLiftGameInstance::UGameLiftGameInstance() 
 	: GameLiftClientClass(UGameLiftClient::StaticClass())
 {
+	Init();
 }
 
 void UGameLiftGameInstance::Init()

@@ -5,23 +5,13 @@
 #include "GameLiftGameInstance.h"
 #include "GameLiftServerSDK.h"
 #include "GameLiftPlayerState.h"
+#include "GameLiftGameModeBase.h"
 
 
 
 void AGameLiftPlayerController::BeginPlay()
 {
 	Super::BeginPlay();
-
-	if (HasAuthority())
-	{
-		auto gameLiftInstance = Cast<UGameLiftGameInstance>(UGameplayStatics::GetGameInstance(GetWorld()));
-
-		if (gameLiftInstance != nullptr)
-		{
-			auto playerSessionId = gameLiftInstance->PlayerSessionId;
-			ServerAcceptPlayer(playerSessionId);
-		}
-	}
 }
 
 void AGameLiftPlayerController::ServerAcceptPlayer_Implementation(const FString& PlayerSessionId)
@@ -32,13 +22,34 @@ void AGameLiftPlayerController::ServerAcceptPlayer_Implementation(const FString&
 	{
 		state->PlayerSessionId = PlayerSessionId;
 	}
+
+	auto mode = Cast<AGameLiftGameModeBase>(UGameplayStatics::GetGameMode(GetWorld()));
+
+	if (mode->IsGameLiftOn())
+	{
+		FGameLiftServerSDKModule* gameLiftSdkModule = &FModuleManager::LoadModuleChecked<FGameLiftServerSDKModule>(FName("GameLiftServerSDK"));
+
+		auto outcome = gameLiftSdkModule->AcceptPlayerSession(PlayerSessionId);
+
+		LOG("is success ? %d", outcome.IsSuccess());
+
+	}
 }
 
 bool AGameLiftPlayerController::ServerAcceptPlayer_Validate(const FString& PlayerSessionId)
 {
-	FGameLiftServerSDKModule* gameLiftSdkModule = &FModuleManager::LoadModuleChecked<FGameLiftServerSDKModule>(FName("GameLiftServerSDK"));
+	return true;
+}
 
-	auto outcome = gameLiftSdkModule->AcceptPlayerSession(PlayerSessionId);
+void AGameLiftPlayerController::TryServerAccept_Implementation()
+{
+#if !WITH_GAMELIFT
+	auto gameLiftInstance = Cast<UGameLiftGameInstance>(UGameplayStatics::GetGameInstance(GetWorld()));
 
-	return outcome.IsSuccess();
+	if (gameLiftInstance != nullptr)
+	{
+		auto playerSessionId = gameLiftInstance->PlayerSessionId;
+		ServerAcceptPlayer(playerSessionId);
+	}
+#endif
 }
